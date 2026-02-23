@@ -1,0 +1,32 @@
+# ============================================
+# Mono Project - Docker Compose
+# ============================================
+# Workflow Canvas Application
+
+version: "3.8"
+
+services:
+  # ==========================================
+  # Workflow Canvas - React + Vite App
+  # ==========================================
+  workflow-canvas:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mono-workflow-canvas
+    restart: unless-stopped
+    ports:
+      - "${CANVAS_PORT:-8080}:80"
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+    networks:
+      - mono-network
+
+networks:
+  mono-network:
+    driver: bridge
+    name: mono-network

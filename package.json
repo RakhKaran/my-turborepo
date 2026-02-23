@@ -1,17 +1,21 @@
 {
-  "name": "my-turborepo",
+  "name": "mono-workflow",
   "private": true,
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
+    "dev:canvas": "npm run dev --workspace=workflow-canvas",
+    "dev:agents": "npm run dev --workspace=agents-api",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "check-types": "turbo run check-types"
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,md}\"",
+    "docker:build": "docker-compose build",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f"
   },
   "devDependencies": {
     "prettier": "^3.6.2",
-    "turbo": "^2.6.1",
-    "typescript": "5.9.2"
+    "turbo": "^2.6.1"
   },
   "engines": {
     "node": ">=18"

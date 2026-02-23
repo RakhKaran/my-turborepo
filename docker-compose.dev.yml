@@ -1,0 +1,31 @@
+# ============================================
+# Mono Project - Development Docker Compose
+# ============================================
+# Use: docker-compose -f docker-compose.dev.yml up
+
+version: "3.8"
+
+services:
+  # ==========================================
+  # Workflow Canvas - Development with Hot Reload
+  # ==========================================
+  workflow-canvas-dev:
+    image: node:20-alpine
+    container_name: mono-canvas-dev
+    working_dir: /app
+    command: sh -c "npm install && npm run dev --workspace=workflow-canvas"
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/apps/workflow-canvas/node_modules
+    environment:
+      - NODE_ENV=development
+    networks:
+      - mono-dev-network
+
+networks:
+  mono-dev-network:
+    driver: bridge
+    name: mono-dev-network

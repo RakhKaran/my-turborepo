@@ -1,0 +1,10 @@
+[
+  {
+    "id": "tool_web_search",
+    "name": "Web Search Tool"
+  },
+  {
+    "id": "tool_crm_lookup",
+    "name": "CRM Lookup Tool"
+  }
+]

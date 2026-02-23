@@ -1,0 +1,49 @@
+[
+  {
+    "id": "agent_support_v1",
+    "title": "Support Agent",
+    "name": "Support Agent",
+    "status": "active",
+    "description": "Handles customer support queries",
+    "configFields": [
+      {
+        "name": "channel_id",
+        "label": "Channel ID",
+        "type": "text",
+        "required": true
+      },
+      {
+        "name": "trigger_phrase",
+        "label": "Trigger Phrase",
+        "type": "text",
+        "required": false,
+        "placeholder": "Optional - leave empty for all messages"
+      }
+    ],
+    "defaultValues": {
+      "channel_id": "",
+      "trigger_phrase": ""
+    },
+    "execution": {
+      "endpoint": "https://api.vendor.com/chat/send",
+      "method": "POST",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "auth": {
+        "type": "bearer",
+        "credentialRef": "cred_support_prod"
+      },
+      "queryParams": [
+        "channel_id"
+      ],
+      "bodyTemplate": {
+        "message": "{{input.message}}",
+        "trigger_phrase": "{{config.trigger_phrase}}"
+      },
+      "timeoutMs": 30000
+    },
+    "createdAt": "2026-02-23T00:00:00.000Z",
+    "updatedAt": "2026-02-23T00:00:00.000Z"
+  }
+]

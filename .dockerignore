@@ -1,0 +1,47 @@
+# Dependencies
+node_modules
+**/node_modules
+
+# Build outputs (rebuilt in Docker)
+dist
+**/dist
+.turbo
+**/.turbo
+
+# Development files
+*.log
+npm-debug.log*
+
+# IDE
+.idea
+.vscode
+*.swp
+.DS_Store
+
+# Git
+.git
+.gitignore
+
+# Docker files
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Tests
+**/__tests__
+**/*.test.*
+**/*.spec.*
+coverage
+
+# Docs
+*.md
+docs
+
+# Temp
+tmp
+temp
