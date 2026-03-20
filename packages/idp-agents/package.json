@@ -1,0 +1,11 @@
+{
+  "name": "@repo/idp-agents",
+  "version": "1.0.0",
+  "description": "Shared agent configurations for IDP",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "dependencies": {}
+}
